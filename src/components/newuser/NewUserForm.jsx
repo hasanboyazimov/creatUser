@@ -1,6 +1,24 @@
-import "./NewUserForm.css"
+import { useState } from "react";
+import "./NewUserForm.css";
+import { v4 as uuidv4 } from "uuid";
 
-function newuserForm() {
+function newUserForm({addUser}) {
+  const [user, setUsers] = useState({
+    id: uuidv4(),
+    image: "",
+    firstName: "",
+    lastName: "",
+    age: null,
+    from: "",
+    job: "",
+    gander: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    addUser(user)
+  }
+
   return (
     <div className="modal-wrapper">
       <div className="overlay">
@@ -9,45 +27,115 @@ function newuserForm() {
           <form>
             <label>
               <span>Image URL:</span>
-              <input type="url" required/>
+              <input
+                onChange={(e) => {
+                  setUsers((prev) => {
+                    return { ...prev, image: e.target.value };
+                  });
+                }}
+                type="url"
+                required
+              />
             </label>
             <label>
               <span>First Name:</span>
-              <input type="text" required/>
+              <input
+                onChange={(e) => {
+                  setUsers((prev) => {
+                    return { ...prev, firstName: e.target.value };
+                  });
+                }}
+                type="text"
+                required
+              />
             </label>
             <label>
               <span>Last Name:</span>
-              <input type="text" required/>
+              <input
+                onChange={(e) => {
+                  setUsers((prev) => {
+                    return { ...prev, lastName: e.target.value };
+                  });
+                }}
+                type="text"
+                required
+              />
             </label>
             <label>
               <span>Age:</span>
-              <input type="number" required/>
+              <input
+                onChange={(e) => {
+                  setUsers((prev) => {
+                    return { ...prev, age: e.target.value };
+                  });
+                }}
+                type="number"
+                required
+              />
             </label>
             <label>
               <span>From:</span>
-              <input type="text" required/>
+              <input
+                onChange={(e) => {
+                  setUsers((prev) => {
+                    return { ...prev, from: e.target.value };
+                  });
+                }}
+                type="text"
+                required
+              />
             </label>
             <label>
               <span>Job:</span>
-              <input type="text" required/>
+              <input
+                onChange={(e) => {
+                  setUsers((prev) => {
+                    return { ...prev, job: e.target.value };
+                  });
+                }}
+                type="text"
+                required
+              />
             </label>
             <div className="gender">
               <span>Gender: </span>
               <label>
                 <small>Male</small>
-                <input type="radio" required name="gender" value="male"/>
+                <input
+                  onChange={(e) => {
+                    setUsers((prev) => {
+                      return { ...prev, image: e.target.value };
+                    });
+                  }}
+                  type="radio"
+                  required
+                  name="gender"
+                  value="male"
+                />
               </label>
               <label>
                 <small>Female</small>
-                <input type="radio" required name="gender" value="female"/>
+                <input
+                  onChange={(e) => {
+                    setUsers((prev) => {
+                      return { ...prev, image: e.target.value };
+                    });
+                  }}
+                  type="radio"
+                  required
+                  name="gender"
+                  value="female"
+                />
               </label>
             </div>
-            <button type="submit" className="modal-btn">Submit</button>
+            <button onClick={handleSubmit} type="submit" className="modal-btn">
+              Submit
+            </button>
           </form>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default newuserForm
+export default newUserForm;

@@ -21,8 +21,23 @@ function App() {
     });
   };
 
+  //close modal
+
+  const closeModal = (e) => {
+    if(e.target.className === "overlay") setShowModal(false)
+    if(e.key === 'Escape') setShowModal(false)
+  }
+
+  // add user
+  const addUser = (user) => {
+    setUsers((prev) => {
+      return [...prev, user]
+    })
+    setShowModal(false)
+  }
+
   return (
-    <div onClick={closeModal} className="App">
+    <div onClick={closeModal} onKeyDown={closeModal} className="App">
       <Navbar usersLength={users.length} />
       <main>
         <div className="no-users">
@@ -30,7 +45,7 @@ function App() {
         </div>
         <UserList users={users} delateUser={delateUser} />
       </main>
-      {showModal && <NewUserForm/>}
+      {showModal && <NewUserForm addUser={addUser}/>}
       <button onClick={() => setShowModal(true)} className="create-user">Create User</button>
       <Footer />
     </div>
@@ -40,13 +55,3 @@ function App() {
 export default App;
 
 
-// {
-//   id: 1,
-//   image: "https://picsum.photos/400?random=1",
-//   firstName: "Hasan",
-//   lastName: "Azimov",
-//   age: 20,
-//   from: "Uzbekistan",
-//   job: "Student",
-//   gander: "Male",
-// }
