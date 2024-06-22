@@ -1,47 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;800;900&display=swap');
-
-*, *::after, *::before {
-    box-sizing: border-box;
+.userList-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 5rem 1rem;
 }
 
-html {
-    height: 100%;
-    font-size: 62.5%;
+.card-inner {
+  /* border: 1px solid; */
+  width: 250px;
+  text-align: center;
+  padding: 0.8rem 0.5rem;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  transition: transform 0.2s;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    font-size: 1.6rem;
-    height: 100%;
+.card-inner:hover {
+  transform: scale(1.05) rotate(-5deg);
+  -webkit-box-shadow: 4px 4px 12px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 12px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 12px 0px rgba(34, 60, 80, 0.2);
 }
 
-ul, ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.card-inner img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-a {
-    text-decoration: none;
+.card-inner button {
+  border: 0;
+  font-family: inherit;
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
 }
 
-.container {
+@media (max-width: 907px) {
+  .card-inner {
     width: 100%;
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5rem;
-    padding-right: 5rem;
-}
-
-#root {
-    height: 100%;
-}
-
-@media (max-width: 375px) {
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
+  }
 }

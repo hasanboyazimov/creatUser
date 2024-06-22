@@ -1,9 +1,7 @@
-// style
+// styles
 import "./UserList.css";
 
-import React from "react";
-
-function UserList({ users, deleteUser }) {
+function userList({ users, delateUser}) {
   return (
     <div className="userList">
       <div className="userList-container container">
@@ -14,14 +12,16 @@ function UserList({ users, deleteUser }) {
                 <img
                   src={user.image}
                   alt={user.name}
-                  width="150"
-                  height="150"
+                  height={150}
+                  width={150}
                 />
-                <h3>{user.firstName} {user.lastName}, {user.age} age.</h3>
+                <h3>
+                  {user.firstName} {user.lastName} {user.age} age
+                </h3>
                 <p>From: {user.from}</p>
                 <p>Job: {user.job}</p>
-                <p>Gender: {user.gender}</p>
-                <button onClick={() => deleteUser(user.id)}>Delete</button> 
+                <p>Gander: {user.gander}</p>
+                <button onClick={() => delateUser(user.id)}>Delate</button>
               </div>
             </div>
           );
@@ -31,4 +31,4 @@ function UserList({ users, deleteUser }) {
   );
 }
 
-export default UserList;
+export default userList;
